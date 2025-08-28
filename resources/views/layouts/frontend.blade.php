@@ -20,6 +20,7 @@
 <body>
 
     <livewire:frontend.partials.header />
+    <livewire:frontend.partials.sidebar />
 
     {{ $slot }}
 
