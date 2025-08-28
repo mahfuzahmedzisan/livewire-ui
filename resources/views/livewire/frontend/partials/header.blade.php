@@ -1,4 +1,4 @@
-<flux:header container class="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-700">
+<flux:header container class="bg-zinc-50 dark:bg-zinc-950/40 border-b border-zinc-200 dark:border-zinc-700">
     <flux:sidebar.toggle class="lg:hidden" icon="bars-4" inset="left" />
     <flux:brand href="{{ route('home') }}" wire:navigate logo="https://fluxui.dev/img/demo/logo.png" name="Acme Inc."
         class="max-lg:hidden dark:hidden" />
@@ -10,7 +10,11 @@
         </flux:navbar.item>
     </flux:navbar>
     <flux:spacer />
-
+    <flux:radio.group x-data variant="segmented" x-model="$flux.appearance" class="me-4 hidden lg:flex">
+        <flux:radio value="light" icon="sun">Light</flux:radio>
+        <flux:radio value="dark" icon="moon">Dark</flux:radio>
+        <flux:radio value="system" icon="computer-desktop">System</flux:radio>
+    </flux:radio.group>
     @auth
         <flux:dropdown position="top" align="start">
             <flux:profile avatar="https://fluxui.dev/img/demo/user.png" />
