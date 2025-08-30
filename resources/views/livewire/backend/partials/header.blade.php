@@ -37,11 +37,10 @@
                     <flux:icon name="sun" class="w-5 h-5" x-show="!$flux.dark" />
                 </flux:button>
 
-
                 <!-- Notifications -->
                 <button @click="toggleNotifications()"
                     class="relative p-2 rounded-xl hover:bg-bg-black/10 dark:hover:bg-bg-white/10 transition-colors">
-                    <flux:icon name="bell" class="w-5 h-5 text-accent" />
+                    <flux:icon name="bell" class="w-5 h-5 text-zinc-500" />
                     <div x-show="notifications.length > 0"
                         class="absolute top-1 right-1 w-2 h-2 bg-red-400 rounded-full notification-badge">
                     </div>

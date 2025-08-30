@@ -47,7 +47,7 @@
                         'name' => 'Admin',
                         'route' => '#',
                         'icon' => 'user-circle',
-                        'active' => 'admin',
+                        'active' => 'admin-dashboard',
                     ],
                     [
                         'name' => 'Role',
@@ -69,7 +69,7 @@
                         'name' => 'All Users',
                         'route' => '#',
                         'icon' => 'user',
-                        'active' => 'admin-users',
+                        'active' => 'admin-dashboard',
                     ],
                     [
                         'name' => 'Top Reposters',

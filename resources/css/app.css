@@ -11,6 +11,10 @@
 
 :root {
     /* ... Light mode colors are unchanged ... */
+
+    --color-black: #000000;
+    --color-white: #ffffff;
+
     --color-primary-50: #fffbf0;
     --color-primary-100: #fef5d8;
     --color-primary-200: #fde8ad;
@@ -76,6 +80,9 @@
     --color-bg-primary: var(--color-bg-primary-light);
     --color-bg-secondary: var(--color-bg-secondary-light);
     --color-bg-tertiary: var(--color-bg-tertiary-light);
+
+    --color-bg-black: var(--color-black);
+    --color-bg-white: var(--color-white);
 
     /* ======================================================
                             # Shadows

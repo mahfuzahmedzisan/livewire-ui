@@ -1,8 +1,4 @@
 <main>
-    <x-slot name="title">Admin Dashboard</x-slot>
-    <x-slot name="breadcrumb">Dashboard</x-slot>
-    <x-slot name="page_slug">admin-dashboard</x-slot>
-
     <section>
         <div class="glass-card rounded-2xl p-6 mb-8">
             <div class="flex items-center justify-center">
