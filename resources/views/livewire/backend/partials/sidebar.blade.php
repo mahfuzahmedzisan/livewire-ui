@@ -10,7 +10,7 @@
 
     <div class="sidebar-glass-card h-full custom-scrollbar rounded-xl overflow-y-auto">
         <!-- Sidebar Header -->
-        <a href="{{ route('admin.dashboard') }}" wire:navigate class="p-4 inline-block">
+        <a href="{{ route('dashboard') }}" wire:navigate class="p-4 inline-block">
             <div class="flex items-center gap-4">
                 <div class="w-10 h-10 glass-card shadow inset-shadow-lg p-0 rounded-xl flex items-center justify-center">
                     <flux:icon name="bolt" class="w-5 h-5 text-text-primary" />
@@ -34,18 +34,18 @@
             <!-- Dashboard -->
 
             {{-- 1. SINGLE NAVLINK (replaces your original single-navlink) --}}
-            <x-admin.navlink type="single" icon="layout-dashboard" name="Dashboard" :route="route('admin.dashboard')"
+            <x-navlink type="single" icon="layout-dashboard" name="Dashboard" :route="route('dashboard')"
                 active="admin-dashboard" :page_slug="$active" />
 
-            <x-admin.navlink type="single" icon="layout-dashboard" name="Button UI" active="button-ui"
+            <x-navlink type="single" icon="layout-dashboard" name="Button UI" active="button-ui"
                 :page_slug="$active" />
 
 
-            <x-admin.navlink type="dropdown" icon="users" name="Admin Management" :page_slug="$active"
+            <x-navlink type="dropdown" icon="users" name="Admin Management" :page_slug="$active"
                 :items="[
                     [
                         'name' => 'Admin',
-                        'route' => route('admin.am.admin.index'),
+                        'route' => '#',
                         'icon' => 'user-circle',
                         'active' => 'admin',
                     ],
@@ -63,7 +63,7 @@
                     ],
                 ]" />
 
-            <x-admin.navlink type="dropdown" icon="users" name="User Management" :page_slug="$active"
+            <x-navlink type="dropdown" icon="users" name="User Management" :page_slug="$active"
                 :items="[
                     [
                         'name' => 'All Users',
@@ -103,7 +103,7 @@
                     ],
                 ]" />
 
-            <x-admin.navlink type="dropdown" icon="users" name="Package Management" :page_slug="$active"
+            <x-navlink type="dropdown" icon="users" name="Package Management" :page_slug="$active"
                 :items="[
                     [
                         'name' => 'Credit',

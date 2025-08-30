@@ -25,7 +25,10 @@
             <!-- Header Actions -->
             <div class="flex items-center gap-3">
                 <!-- Search -->
-                <x-admin.search-form placeholder="Search here..." />
+                {{-- <x-admin.search-form placeholder="Search here..." /> --}}
+                <flux:input type="search" placeholder="Search here..."
+                    class="w-32 sm:w-48 lg:w-64 !px-3 !py-2 !rounded-xl !bg-bg-black/10 dark:!bg-bg-white/10 !border-0 focus:!ring-2 focus:!ring-white/20 focus:!outline-none transition-all duration-200"
+                    icon="magnifying-glass" />
 
                 {{-- <!-- Theme Toggle --> --}}
                 <flux:button x-data x-on:click="$flux.dark = !$flux.dark" variant="subtle"
@@ -66,10 +69,16 @@
                         x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
                         class="hidden absolute right-0 mt-2 w-fit min-w-40 glass-card bg-bg-white dark:bg-bg-dark-tertiary rounded-xl shadow-lg py-2 z-50"
                         :class="open ? '!block' : '!hidden'">
-                        <x-admin.profile-navlink route="#" name="{{ __('Profile') }}" />
+
+                        <div class="px-4 py-2 border-b border-white/10">
+                            <p class="text-sm text-text-primary font-medium">Alex Johnson</p>
+                            <p class="text-xs text-text-secondary">@alexjohnson</p>
+                        </div>
+
+                        {{-- <x-admin.profile-navlink route="#" name="{{ __('Profile') }}" />
                         <x-admin.profile-navlink route="#" name="{{ __('Settings') }}" />
                         <x-admin.profile-navlink route="{{ route('logout') }}" logout='true'
-                            name="{{ __('Sign Out') }}" />
+                            name="{{ __('Sign Out') }}" /> --}}
                         {{-- <a href="#"
                          class="block px-4 py-2 text-text-primary hover:bg-bg-white/10 transition-colors">Profile</a>
                      <a href="#"
@@ -86,7 +95,7 @@
         <!-- Breadcrumb -->
         <div class="px-4 lg:px-6 pb-4">
             <nav class="flex items-center gap-2 text-sm text-text-secondary">
-                <a href="{{ route('admin.dashboard') }}">{{ __('Admin Dashboard') }}</a>
+                <a href="{{ route('dashboard') }}">{{ __('Admin Dashboard') }}</a>
                 <flux:icon name="chevron-right" class="w-4 h-4" />
                 <span class="text-text-muted capitalize"> {{ $breadcrumb }}</span>
             </nav>
