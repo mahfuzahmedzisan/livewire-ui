@@ -28,11 +28,11 @@
         <flux:separator class="bg-accent!" />
 
         <nav class="p-2 space-y-2">
-            <x-navlink type="single" icon="layout-dashboard" name="Dashboard" :route="route('dashboard')"
+            <x-backend.navlink type="single" icon="layout-dashboard" name="Dashboard" :route="route('dashboard')"
                 active="admin-dashboard" :page_slug="$active" />
-            <x-navlink type="single" icon="chart-pie" name="Analytics"  active="analytics"
+            <x-backend.navlink type="single" icon="chart-pie" name="Analytics"  active="analytics"
                 :page_slug="$active" />
-            <x-navlink type="single" icon="inbox" name="Inbox" active="inbox"
+            <x-backend.navlink type="single" icon="inbox" name="Inbox" active="inbox"
                 :page_slug="$active" />
 
             <div class="pt-4 pb-2">
@@ -41,7 +41,7 @@
                 <p class="text-center text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase"
                     x-show="desktop && !sidebar_expanded">...</p>
             </div>
-            <x-navlink type="dropdown" icon="users" name="Admin Management" :page_slug="$active" :items="[
+            <x-backend.navlink type="dropdown" icon="users" name="Admin Management" :page_slug="$active" :items="[
                 [
                     'name' => 'Admins',
                     'route' => '#',
@@ -62,7 +62,7 @@
                 ],
             ]" />
 
-            <x-navlink type="dropdown" icon="user-group" name="User Management" :page_slug="$active" :items="[
+            <x-backend.navlink type="dropdown" icon="user-group" name="User Management" :page_slug="$active" :items="[
                 [
                     'name' => 'All Users',
                     'route' => '#',
@@ -89,7 +89,7 @@
                 <p class="text-center text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase"
                     x-show="desktop && !sidebar_expanded">...</p>
             </div>
-            <x-navlink type="dropdown" icon="cog-8-tooth" name="Application Settings" :page_slug="$active"
+            <x-backend.navlink type="dropdown" icon="cog-8-tooth" name="Application Settings" :page_slug="$active"
                 :items="[
                     [
                         'name' => 'General Settings',
@@ -149,10 +149,10 @@
 
             <div class="p-2 space-y-2">
                 <flux:separator class="bg-accent!" />
-                <x-navlink type="single" icon="user" name="Profile" active="profile"
+                <x-backend.navlink type="single" icon="user" name="Profile" active="profile"
                     :page_slug="$active" />
                 <button wire:click="logout" class="w-full text-left">
-                    <x-navlink type="single" icon="power" name="Logout" />
+                    <x-backend.navlink type="single" icon="power" name="Logout" />
                 </button>
             </div>
         </nav>
