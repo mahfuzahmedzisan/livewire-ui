@@ -8,13 +8,9 @@
 
     <title>
         {{ isset($title) ? $title . ' - ' : '' }}
-        {{ config('app.name', 'Dashboard Setup') }}
+        {{ site_name() }}
     </title>
 
-    <title>
-        {{ isset($title) ? $title . ' - ' : '' }}
-        {{ config('app.name', 'Dashboard Setup') }}
-    </title>
 
     {{-- BoxIcon  --}}
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -23,26 +19,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
 
-    {{-- <script>
-        const content_image_upload_url = '{{ route('file.ci_upload') }}';
-    </script> --}}
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            @if (session('success'))
-                showAlert('success', "{!! session('success') !!}");
-            @endif
-
-            @if (session('error'))
-                showAlert('error', "{!! session('error') !!}");
-            @endif
-
-            @if (session('warning'))
-                showAlert('warning', "{!! session('warning') !!}");
-            @endif
-        });
-    </script>
-    {{-- Custom CSS  --}}
     @fluxAppearance()
+    <style>
+        @keyframes bounce-dot {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+    {{-- Custom CSS  --}}
     @stack('styles')
 
 </head>
@@ -81,6 +72,19 @@
 
     <!-- Notification Panel -->
     {{-- <x-admin::notification /> --}}
+
+    <div id="navigation-loader" x-transition.opacity
+        class="fixed inset-0 z-50 flex items-center justify-center bg-accent-foreground/50 backdrop-blur-md">
+        <div class="flex space-x-2">
+            <div class="w-4 h-4 rounded-full bg-accent animate-[bounce-dot_1.2s_infinite]"
+                style="animation-delay: -0.8s;"></div>
+            <div class="w-4 h-4 rounded-full bg-accent animate-[bounce-dot_1.2s_infinite]"
+                style="animation-delay: -0.4s;"></div>
+            <div class="w-4 h-4 rounded-full bg-accent animate-[bounce-dot_1.2s_infinite]"></div>
+        </div>
+    </div>
+
+
 
     <script>
         function dashboardData() {
@@ -310,55 +314,23 @@
                 }
             }
         });
+    </script>
 
-        // Add loading states for interactive elements
-        document.addEventListener('click', function(e) {
-            if (e.target.matches('.btn-primary') || e.target.closest('.btn-primary')) {
-                const btn = e.target.matches('.btn-primary') ? e.target : e.target.closest('.btn-primary');
-                btn.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    btn.style.transform = '';
-                }, 150);
-            }
+    @fluxScripts()
+    <script>
+        document.addEventListener('livewire:navigate', (event) => {
+            document.getElementById('navigation-loader').classList.remove('hidden');
         });
 
-        // Add ripple effect to interactive cards
-        document.addEventListener('click', function(e) {
-            if (e.target.matches('.interactive-card') || e.target.closest('.interactive-card')) {
-                const card = e.target.matches('.interactive-card') ? e.target : e.target.closest(
-                    '.interactive-card');
-                const rect = card.getBoundingClientRect();
-                const ripple = document.createElement('span');
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
+        document.addEventListener('livewire:navigating', () => {
+            document.getElementById('navigation-loader').classList.remove('hidden');
+        });
 
-                ripple.style.cssText = `
-                    position: absolute;
-                    width: ${size}px;
-                    height: ${size}px;
-                    left: ${x}px;
-                    top: ${y}px;
-                    background: rgba(255, 255, 255, 0.1);
-                    border-radius: 50%;
-                    transform: scale(0);
-                    animation: ripple 0.6s ease-out;
-                    pointer-events: none;
-                    `;
-
-                card.style.position = 'relative';
-                card.style.overflow = 'hidden';
-                card.appendChild(ripple);
-
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
-            }
+        document.addEventListener('livewire:navigated', () => {
+            document.getElementById('navigation-loader').classList.add('hidden');
         });
     </script>
-    {{-- <link rel="stylesheet" href="{{ asset('assets/css/ripple.css') }}"> --}}
-    {{-- Custom JS --}}
-    @fluxScripts()
+
     @stack('scripts')
 
 </body>

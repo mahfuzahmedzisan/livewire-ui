@@ -116,7 +116,7 @@
             <!-- Single Navlink (like original single-navlink) -->
             @if (empty($permission) || auth()->user()->can($permission))
                 <a href="{{ $route }}" wire:navigate
-                    class="sidebar-item flex items-center gap-4 p-3 rounded-xl hover:bg-bg-black/10 dark:hover:bg-bg-white/10 text-text-primary transition-all duration-200 group {{ $isMainActive ? 'bg-bg-dark/5 dark:bg-bg-white/5' : '' }}">
+                    class="sidebar-item flex items-center gap-4 p-3 rounded-xl hover:bg-bg-black/10 dark:hover:bg-bg-white/10 text-text-primary transition-all duration-200 group {{ $isMainActive ? 'bg-bg-black/5 dark:bg-bg-white/5' : '' }}">
                     <div
                         class="w-8 h-8 glass-card rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform relative">
                         @if ($boxicon)
@@ -142,7 +142,7 @@
                         x-transition:leave="transition-all duration-200"
                         x-transition:leave-start="opacity-100 translate-x-0"
                         x-transition:leave-end="opacity-0 -translate-x-4"
-                        class="font-medium {{ $isMainActive ? 'text-text-primary ' : 'text-text-muted ' }}">{{ __($name) }}</span>
+                        class="font-medium {{ $isMainActive ? 'text-accent-content ' : 'text-text-secondary ' }}">{{ __($name) }}</span>
                     <div x-show="(desktop && sidebar_expanded) || (!desktop && mobile_menu_open)"
                         class="ml-auto {{ $isMainActive ? 'block' : 'hidden' }}">
                         <div class="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
@@ -181,7 +181,7 @@
                     x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition-all duration-200"
                     x-transition:leave-start="opacity-100 translate-x-0"
                     x-transition:leave-end="opacity-0 -translate-x-4"
-                    class="font-medium text-left {{ $isAnyActive ? 'text-text-primary ' : 'text-text-secondary ' }}">{{ __($name) }}</span>
+                    class="font-medium text-left {{ $isAnyActive ? 'text-accent-content ' : 'text-text-secondary ' }}">{{ __($name) }}</span>
 
                 <!-- Dropdown Arrow for expanded state -->
                 <div x-show="(desktop && sidebar_expanded) || (!desktop && mobile_menu_open)"
@@ -278,7 +278,7 @@
                             <!-- Single Navigation Item -->
                             <a href="{{ empty($item['route']) ? 'javascript:void(0);' : $item['route'] }}"
                                 wire:navigate
-                                class="flex items-center gap-3 p-3 mx-2 rounded-lg hover:bg-bg-dark/10 dark:hover:bg-bg-white/10 transition-all duration-200 group {{ isset($item['active']) && $page_slug == $item['active'] ? 'bg-bg-dark/5 dark:bg-bg-white/5 border border-zinc-200 dark:border-zinc-800' : '' }}">
+                                class="flex items-center gap-3 p-3 mx-2 rounded-lg hover:bg-bg-black/10 dark:hover:bg-bg-white/10 transition-all duration-200 group {{ isset($item['active']) && $page_slug == $item['active'] ? 'bg-bg-black/5 dark:bg-bg-white/5 border border-zinc-200 dark:border-zinc-800' : '' }}">
                                 <div
                                     class="w-8 h-8 glass-card rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
                                     @if ($subitemBoxicon)
@@ -292,7 +292,7 @@
                                 </div>
                                 <div class="flex-1">
                                     <span
-                                        class="font-medium text-sm {{ isset($item['active']) && $page_slug == $item['active'] ? 'text-text-primary' : 'text-text-muted' }}">{{ __($item['name']) }}</span>
+                                        class="font-medium text-sm {{ isset($item['active']) && $page_slug == $item['active'] ? 'text-accent-content' : 'text-text-secondary' }}">{{ __($item['name']) }}</span>
                                 </div>
                                 @if (isset($item['active']) && $page_slug == $item['active'])
                                     <div class="w-2 h-2 bg-accent rounded-full animate-pulse">
@@ -311,7 +311,7 @@
                             })() }} }" class="mx-2">
 
                                 <button @click="subOpen = !subOpen"
-                                    class="flex items-center gap-3 p-3 rounded-lg hover:bg-bg-dark/10 dark:hover:bg-bg-white/10 transition-all duration-200 w-full group">
+                                    class="flex items-center gap-3 p-3 rounded-lg hover:bg-bg-black/10 dark:hover:bg-bg-white/10 transition-all duration-200 w-full group">
                                     <div
                                         class="w-8 h-8 glass-card rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform relative">
                                         @if ($subitemBoxicon)
@@ -340,10 +340,10 @@
                                         class="font-medium text-sm flex-1 text-left {{ (function () use ($item, $page_slug) {
                                             foreach ($item['subitems'] as $subitem) {
                                                 if (isset($subitem['active']) && $page_slug == $subitem['active']) {
-                                                    return 'text-text-primary';
+                                                    return 'text-accent-content';
                                                 }
                                             }
-                                            return 'text-text-muted';
+                                            return 'text-text-secondary';
                                         })() }}">{{ __($item['name']) }}</span>
                                     <div class="transition-transform duration-200" :class="subOpen ? 'rotate-180' : ''">
                                         <flux:icon name="chevron-down" class="w-4 h-4 text-text-primary" />
@@ -390,7 +390,7 @@
                                                 @endif
                                             </div>
                                             <span
-                                                class="font-medium text-xs {{ isset($subitem['active']) && $page_slug == $subitem['active'] ? 'text-text-primary' : 'text-text-muted ' }} flex-1">{{ __($subitem['name']) }}</span>
+                                                class="font-medium text-xs {{ isset($subitem['active']) && $page_slug == $subitem['active'] ? 'text-accent-content' : 'text-text-secondary ' }} flex-1">{{ __($subitem['name']) }}</span>
                                             @if (isset($subitem['active']) && $page_slug == $subitem['active'])
                                                 <div class="w-1.5 h-1.5 bg-accent rounded-full animate-pulse">
                                                 </div>
@@ -417,7 +417,7 @@
                                 </div>
                                 <div class="flex-1">
                                     <span
-                                        class="font-medium text-sm {{ isset($item['active']) && $page_slug == $item['active'] ? 'text-text-primary' : 'text-text-muted ' }}">{{ __($item['name']) }}</span>
+                                        class="font-medium text-sm {{ isset($item['active']) && $page_slug == $item['active'] ? 'text-accent-content' : 'text-text-secondary ' }}">{{ __($item['name']) }}</span>
                                 </div>
                                 @if (isset($item['active']) && $page_slug == $item['active'])
                                     <div class="w-2 h-2 bg-accent rounded-full animate-pulse">
@@ -464,7 +464,7 @@
                                 @endif
                             </div>
                             <span
-                                class="font-medium text-sm  text-left {{ isset($item['active']) && $page_slug == $item['active'] ? 'text-text-primary' : 'text-text-muted ' }}">{{ __($item['name']) }}</span>
+                                class="font-medium text-sm  text-left {{ isset($item['active']) && $page_slug == $item['active'] ? 'text-accent-content' : 'text-text-secondary ' }}">{{ __($item['name']) }}</span>
                         </a>
                     @elseif (isset($item['subitems']) && count($item['subitems']) > 0)
                         <!-- Multi-dropdown item -->
@@ -511,7 +511,8 @@
                                             })() }}" />
                                     @endif
                                 </div>
-                                <span class="font-medium text-sm flex-1 text-left">{{ __($item['name']) }}</span>
+                                <span class="font-medium text-sm flex-1 text-left {{ (function () use ($item, $page_slug) {
+                                    foreach ($item['subitems'] as $subitem) { if (isset($subitem['active']) && $page_slug == $subitem['active']) { return 'text-accent-content'; } } return 'text-text-secondary'; })() }}">{{ __($item['name']) }}</span>
                                 <div class="transition-transform duration-200" :class="subOpen ? 'rotate-180' : ''">
                                     <flux:icon name="chevron-down" class="w-3 h-3 text-text-primary flex-shrink-0" />
                                 </div>
@@ -544,7 +545,7 @@
                                             @endif
                                         </div>
                                         <span
-                                            class="font-medium text-xs {{ isset($subitem['active']) && $page_slug == $subitem['active'] ? 'text-text-primary' : 'text-text-secondary ' }}">{{ __($subitem['name']) }}</span>
+                                            class="font-medium text-xs {{ isset($subitem['active']) && $page_slug == $subitem['active'] ? 'text-accent-content' : 'text-text-secondary ' }}">{{ __($subitem['name']) }}</span>
                                         @if (isset($subitem['active']) && $page_slug == $subitem['active'])
                                             <div class="ml-auto">
                                                 <div class="w-1.5 h-1.5 bg-accent rounded-full animate-pulse">
@@ -570,7 +571,7 @@
                                 @endif
                             </div>
                             <span
-                                class="font-medium text-sm {{ isset($item['active']) && $page_slug == $item['active'] ? 'text-text-primary' : 'text-text-secondary ' }}">{{ __($item['name']) }}</span>
+                                class="font-medium text-sm {{ isset($item['active']) && $page_slug == $item['active'] ? 'text-accent-content' : 'text-text-secondary ' }}">{{ __($item['name']) }}</span>
                             @if (isset($item['active']) && $page_slug == $item['active'])
                                 <div class="ml-auto">
                                     <div class="w-1.5 h-1.5 bg-accent rounded-full animate-pulse">
