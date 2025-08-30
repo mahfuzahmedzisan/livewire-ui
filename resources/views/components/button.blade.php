@@ -7,72 +7,77 @@
     'target' => '_self',
     'disabled' => false,
     'title' => '',
-    'outline' => false,
-    'dashed' => false,
-    'linkText' => false,
     'variant' => 'primary',
+    'small' => false,
+    'class' => '',
 ])
 
 @php
-    $classes = Flux::classes('flex items-center justify-center gap-2');
+    // A map of button variants and their Tailwind CSS classes.
+    $variants = [
+        'primary' => 'bg-accent text-accent-foreground hover:bg-accent/90 focus:ring-accent/50',
+        'secondary' =>
+            'bg-bg-tertiary-light dark:bg-bg-tertiary-dark text-text-primary-light dark:text-text-primary-dark hover:bg-bg-secondary-light dark:hover:bg-bg-secondary-dark focus:ring-text-primary-light/50 dark:focus:ring-text-primary-dark/50',
+        'outline' => 'bg-transparent border border-accent text-accent hover:bg-accent/10 focus:ring-accent/50',
+        'dashed' =>
+            'bg-transparent border border-dashed border-accent text-accent hover:bg-accent/10 focus:ring-accent/50',
+        'link' => 'bg-transparent text-accent p-0 !h-auto !shadow-none !ring-0 hover:bg-transparent focus:ring-0',
+    ];
 
-    if ($outline) {
-        $classes .= ' border border-accent';
-    }
+    // Get the classes for the requested variant, with a fallback to 'primary' if it doesn't exist.
+$variantClasses = $variants[$variant] ?? $variants['primary'];
 
-    if ($dashed) {
-        $classes .= ' border-dashed';
-    }
+// Base classes for all buttons
+$baseClasses =
+    'inline-flex items-center justify-center font-medium rounded-xl shadow-sm hover:shadow-md focus:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200';
 
-    if ($disabled) {
-        $classes .= ' opacity-50 cursor-not-allowed pointer-events-none';
-    }
-    if ($linkText) {
-        $classes .= ' !bg-transparent !p-0 !h-auto !shadow-none !ring-0 hover:!bg-transparent focus:!ring-0';
-    }
-    if ($variant === 'secondary') {
-        $classes .= ' bg-accent text-accent-foreground';
-    } elseif ($variant === 'tertiary') {
-        $classes .= ' bg-accent-foreground text-accent';
+// Handle padding and icon positioning
+$paddingClasses = 'py-2';
+if ($icon) {
+    if ($iconPosition === 'left') {
+        $paddingClasses = 'pl-3 pr-4';
     } else {
-        $classes .= ' bg-accent text-accent-foreground';
+        $paddingClasses = 'pl-4 pr-3';
     }
-    if ($icon) {
-        if ($iconPosition === 'left') {
-            $classes .= ' pl-3 pr-4';
-        } else {
-            $classes .= ' pl-4 pr-3';
-        }
+} else {
+    $paddingClasses = 'px-4';
+}
+
+if ($small) {
+    $baseClasses =
+        'inline-flex items-center justify-center font-medium rounded-xl shadow-sm hover:shadow-md focus:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200 text-xs py-1.5 px-3';
+}
+
+// Combine all classes
+$finalClasses = trim("{$baseClasses} {$variantClasses} {$paddingClasses} {$class}");
+
+// Add disabled classes
+if ($disabled) {
+    $finalClasses .= ' opacity-50 cursor-not-allowed pointer-events-none';
     }
-    if (!$icon) {
-        $classes .= ' px-4';
-    }
-    $classes .=
-        ' py-2 rounded-xl text-sm font-medium shadow hover:shadow-md focus:shadow-md focus:outline-none focus:ring-2 focus:ring-accent-foreground/30 transition-all duration-200';
-    return $classes;
+
 @endphp
+
 @if ($route)
-    <a href="{{ $route }}" target="{{ $target }}" title="{{ $title }}"
-        class="{{ $classes }} {{ $attributes->get('class') }}"
+    <a href="{{ $route }}" target="{{ $target }}" title="{{ $title }}" class="{{ $finalClasses }}"
         {{ $disabled ? 'aria-disabled=true tabindex=-1' : '' }} {{ $attributes->except('class') }}>
         @if ($icon && $iconPosition === 'left')
-            <flux:icon name="{{ $icon }}" class="w-5 h-5" />
+            <flux:icon name="{{ $icon }}" class="w-4 h-4" />
         @endif
         <span>{{ $slot }}</span>
         @if ($icon && $iconPosition === 'right')
-            <flux:icon name="{{ $icon }}" class="w-5 h-5" />
+            <flux:icon name="{{ $icon }}" class="w-4 h-4" />
         @endif
     </a>
 @else
-    <button type="{{ $type }}" title="{{ $title }}"
-        class="{{ $classes }} {{ $attributes->get('class') }}"
+    <button type="{{ $type }}" title="{{ $title }}" class="{{ $finalClasses }}"
         {{ $disabled ? 'disabled aria-disabled=true tabindex=-1' : '' }} {{ $attributes->except('class') }}>
         @if ($icon && $iconPosition === 'left')
-            <flux:icon name="{{ $icon }}" class="w-5 h-5" />
+            <flux:icon name="{{ $icon }}" class="w-4 h-4" />
         @endif
         <span>{{ $slot }}</span>
         @if ($icon && $iconPosition === 'right')
-            <flux:icon name="{{ $icon }}" class="w-5 h-5" />
+            <flux:icon name="{{ $icon }}" class="w-4 h-4" />
         @endif
     </button>
 @endif

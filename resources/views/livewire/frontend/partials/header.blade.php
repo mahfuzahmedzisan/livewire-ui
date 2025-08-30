@@ -15,6 +15,9 @@
         <flux:navbar.item icon="home" href="{{ route('home') }}" wire:navigate>
             Home
         </flux:navbar.item>
+        <flux:navbar.item icon="rectangle-group" href="{{ route('buttons') }}" wire:navigate>
+            Buttons
+        </flux:navbar.item>
     </flux:navbar>
     <flux:spacer />
     <flux:radio.group x-data variant="segmented" x-model="$flux.appearance" class="me-4 hidden lg:flex">
