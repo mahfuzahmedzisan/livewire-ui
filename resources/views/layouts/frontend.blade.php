@@ -25,8 +25,6 @@
                 transform: translateY(-20px);
             }
         }
-
-
     </style>
     @stack('styles')
 </head>
@@ -58,7 +56,6 @@
     </div>
 
     @fluxScripts
-    @stack('scripts')
 
     <script>
         document.addEventListener('livewire:navigate', (event) => {
@@ -73,6 +70,8 @@
             document.getElementById('navigation-loader').classList.add('hidden');
         });
     </script>
+
+    @stack('scripts')
 
 </body>
 
