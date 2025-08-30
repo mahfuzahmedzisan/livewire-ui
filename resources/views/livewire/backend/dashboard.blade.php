@@ -92,7 +92,8 @@
                     </div>
                 </div>
                 {{-- Adjusted for light/dark mode text --}}
-                <h3 class="text-2xl font-bold text-text-primary mb-1" x-text="stats.activeUsers.toLocaleString()">847</h3>
+                <h3 class="text-2xl font-bold text-text-primary mb-1" x-text="stats.activeUsers.toLocaleString()">847
+                </h3>
                 {{-- Adjusted for light/dark mode text --}}
                 <p class="text-text-secondary text-sm">Active Users</p>
                 <div class="mt-4 h-1 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden">
@@ -147,7 +148,8 @@
                     <div class="space-y-4">
                         <template x-for="activity in recentActivity" :key="activity.id">
                             {{-- Adjusted for light/dark mode hover state --}}
-                            <div class="flex items-center gap-3 p-3 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
+                            <div
+                                class="flex items-center gap-3 p-3 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
                                 <div class="w-8 h-8 rounded-lg flex items-center justify-center"
                                     :class="activity.iconBg">
                                     <flux:icon name="activity" class="w-4 h-4" x-bind:class="activity.iconColor" />

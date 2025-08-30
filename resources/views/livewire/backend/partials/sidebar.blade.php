@@ -116,10 +116,10 @@
                         'active' => 'settings-email',
                     ],
                     [
-                        'name' => 'Payment',
+                        'name' => 'Payment Gateways',
                         'route' => '#',
                         'icon' => 'credit-card',
-                        'active' => 'settings-payment',
+                        'active' => 'settings-payments',
                     ],
                     [
                         'name' => 'Analytics',
