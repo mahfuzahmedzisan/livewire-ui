@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Backend\Partials;
 
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Sidebar extends Component
@@ -12,6 +13,14 @@ class Sidebar extends Component
     public function mount(string $active)
     {
         $this->active = $active;
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        session()->invalidate();
+        session()->regenerateToken();        
+        return $this->redirectRoute('home', navigate: true);
     }
 
     public function render()
