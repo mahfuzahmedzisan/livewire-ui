@@ -12,22 +12,8 @@
              </div>
          </div>
      </div>
-     <div class="glass-card rounded-2xl p-6">
-         <table class="table table-zebra">
-             <thead>
-                 <tr class="text-text-primary border-accent">
-                     <th width="5%">{{ __('SL') }}</th>
-                     <th>{{ __('Name') }}</th>
-                     <th>{{ __('Email') }}</th>
-                     <th>{{ __('Role') }}</th>
-                     <th>{{ __('Verified') }}</th>
-                     <th>{{ __('Created By') }}</th>
-                     <th>{{ __('Created Date') }}</th>
-                     <th width="10%">{{ __('Action') }}</th>
-                 </tr>
-             </thead>
-             <tbody>
-             </tbody>
-         </table>
+   
+     <div class="mt-4 glass-card rounded-2xl p-6">
+         @livewire('user-table')
      </div>
  </section>
