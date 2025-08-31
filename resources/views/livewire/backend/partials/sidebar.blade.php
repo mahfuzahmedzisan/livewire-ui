@@ -147,7 +147,7 @@
                     ],
                 ]" />
 
-            <div class="p-2 space-y-2">
+            <div class="space-y-2">
                 <flux:separator class="bg-accent!" />
                 <x-backend.navlink type="single" icon="user" name="Profile" active="profile"
                     :page_slug="$active" />
