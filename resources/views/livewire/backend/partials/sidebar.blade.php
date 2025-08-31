@@ -8,7 +8,7 @@
     }">
 
     <div class="sidebar-glass-card h-full custom-scrollbar rounded-xl overflow-y-auto">
-        <a href="{{ route('dashboard') }}" wire:navigate class="p-4 inline-block">
+        <a href="{{ route('admin.dashboard') }}" wire:navigate class="p-4 inline-block">
             <div class="flex items-center gap-4">
                 <div class="w-10 h-10 glass-card shadow inset-shadow-lg p-0 rounded-xl flex items-center justify-center">
                     <flux:icon name="bolt" class="w-5 h-5 text-zinc-500" />
@@ -28,7 +28,7 @@
         <flux:separator class="bg-accent!" />
 
         <nav class="p-2 space-y-2">
-            <x-backend.navlink type="single" icon="layout-dashboard" name="Dashboard" :route="route('dashboard')"
+            <x-backend.navlink type="single" icon="layout-dashboard" name="Dashboard" :route="route('admin.dashboard')"
                 active="admin-dashboard" :page_slug="$active" />
             <x-backend.navlink type="single" icon="chart-pie" name="Analytics"  active="analytics"
                 :page_slug="$active" />
@@ -65,7 +65,7 @@
             <x-backend.navlink type="dropdown" icon="user-group" name="User Management" :page_slug="$active" :items="[
                 [
                     'name' => 'All Users',
-                    'route' => '#',
+                    'route' => route('admin.users'),
                     'icon' => 'user',
                     'active' => 'admin-users',
                 ],
@@ -89,7 +89,7 @@
                 <p class="text-center text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase"
                     x-show="desktop && !sidebar_expanded">...</p>
             </div>
-            <x-backend.navlink type="dropdown" icon="cog-8-tooth" name="Application Settings" :page_slug="$active"
+            <x-backend.navlink type="dropdown" icon="wrench-screwdriver" name="Application Settings" :page_slug="$active"
                 :items="[
                     [
                         'name' => 'General Settings',

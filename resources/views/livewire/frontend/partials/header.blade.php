@@ -29,6 +29,13 @@
         <flux:dropdown position="top" align="start">
             <flux:profile avatar="https://fluxui.dev/img/demo/user.png" />
             <flux:menu>
+                @auth
+                    <flux:menu.item icon="layout-dashboard" href="{{ route('admin.dashboard') }}" wire:navigate>Dashboard
+                    </flux:menu.item>
+                @else
+                    <flux:menu.item icon="log-in" href="{{ route('login') }}" wire:navigate>Login</flux:menu.item>
+                @endauth
+                <flux:menu.separator />
                 <flux:menu.item icon="user-circle">Profile</flux:menu.item>
                 <flux:menu.item icon="envelope">Messages</flux:menu.item>
                 <flux:menu.item icon="wrench-screwdriver">Settings</flux:menu.item>

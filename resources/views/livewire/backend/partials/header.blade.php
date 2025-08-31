@@ -94,7 +94,7 @@
         <!-- Breadcrumb -->
         <div class="px-4 lg:px-6 pb-4">
             <nav class="flex items-center gap-2 text-sm text-text-secondary">
-                <a href="{{ route('dashboard') }}">{{ __('Admin Dashboard') }}</a>
+                <a href="{{ route('admin.dashboard') }}">{{ __('Admin Dashboard') }}</a>
                 <flux:icon name="chevron-right" class="w-4 h-4" />
                 <span class="text-text-muted capitalize"> {{ $breadcrumb }}</span>
             </nav>
