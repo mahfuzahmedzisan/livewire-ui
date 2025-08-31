@@ -1,7 +1,7 @@
  <section>
      <div class="glass-card rounded-2xl p-6 mb-6">
          <div class="flex items-center justify-between">
-             <h2 class="text-xl font-bold text-text-black dark:text-text-white">{{ __('Admin List') }}</h2>
+             <h2 class="text-xl font-bold text-text-primary">{{ __('Admin List') }}</h2>
              <div class="flex items-center gap-2">
                  <x-button href="#" icon="trash-2" type='secondary' permission="admin-trash">
                      {{ __('Trash') }}
@@ -13,9 +13,9 @@
          </div>
      </div>
      <div class="glass-card rounded-2xl p-6">
-         <table class="table datatable table-zebra">
+         <table class="table table-zebra">
              <thead>
-                 <tr>
+                 <tr class="text-text-primary border-accent">
                      <th width="5%">{{ __('SL') }}</th>
                      <th>{{ __('Name') }}</th>
                      <th>{{ __('Email') }}</th>

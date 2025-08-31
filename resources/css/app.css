@@ -7,6 +7,15 @@
 @source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
 @source '../../vendor/livewire/flux/stubs/**/*.blade.php';
 
+/* PowerGrid::theme('daisyui'); DataTable */
+@source '../../app/Livewire/*Table.php';
+@source '../../app/Livewire/**/*Table.php';
+@source '../../vendor/power-components/livewire-powergrid/src/Themes/DaisyUI.php';
+@source '../../vendor/power-components/livewire-powergrid/resources/views/**/*.php';
+
+@import "flatpickr/dist/flatpickr.min.css";
+@import "~tom-select/dist/scss/tom-select.bootstrap5";
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
